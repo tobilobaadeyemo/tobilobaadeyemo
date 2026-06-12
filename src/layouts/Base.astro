@@ -1,0 +1,215 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://www.tobilobaadeyemo.com/#person',
+  name: 'Tobiloba Adeyemo',
+  jobTitle: 'Cloud Security Engineer',
+  description:
+    'Founder and systems operator turned cloud security engineer. Building and running ventures across Africa, now focused on identity and platform security.',
+  url: 'https://www.tobilobaadeyemo.com/',
+  worksFor: { '@type': 'Organization', name: 'Raptview Labs' },
+  address: { '@type': 'PostalAddress', addressRegion: 'Gauteng', addressCountry: 'ZA' },
+  knowsAbout: [
+    'Cloud Security',
+    'Identity and Access Management',
+    'Microsoft Entra ID',
+    'Google Cloud Platform',
+    'Cybersecurity for SMEs'
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/tobilobaadeyemo',
+    'https://github.com/tobilobaadeyemo',
+    'https://www.credly.com/users/tobilobaadeyemo'
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Tobiloba Adeyemo" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container">
+        <a class="brand" href="/">Tobiloba Adeyemo</a>
+        <div class="nav-links">
+          <a href="/#services">Services</a>
+          <a href="/#certifications">Certifications</a>
+          <a href="/#about">About</a>
+          <a href="/#contact" class="btn btn-small">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="brand">Tobiloba Adeyemo</p>
+          <p class="muted">
+            Cloud Security Engineer | Founder, Raptview Labs<br />
+            Identity &amp; Cloud Platform Security
+          </p>
+          <p class="muted">Gauteng, South Africa</p>
+        </div>
+        <div>
+          <p class="footer-heading">Site</p>
+          <a href="/#services">Services</a>
+          <a href="/#certifications">Certifications</a>
+          <a href="/#about">About</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+        </div>
+        <div>
+          <p class="footer-heading">Profiles</p>
+          <a href="https://www.linkedin.com/in/tobilobaadeyemo" rel="me">LinkedIn</a>
+          <a href="https://github.com/tobilobaadeyemo" rel="me">GitHub</a>
+          <a href="https://www.credly.com/users/tobilobaadeyemo" rel="me">Credly</a>
+        </div>
+      </div>
+      <div class="container">
+        <p class="muted copyright">© {new Date().getFullYear()} Tobiloba Adeyemo. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #0b1117;
+    --bg-soft: #111a23;
+    --card: #16222e;
+    --border: #233240;
+    --text: #e8eef4;
+    --muted: #9db0c0;
+    --accent: #2dd4a7;
+    --accent-dark: #14b88c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 1.25rem; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .muted { color: var(--muted); }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 17, 23, 0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+  .site-header nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-weight: 700; color: var(--text); letter-spacing: 0.01em; }
+  .nav-links { display: flex; gap: 1.4rem; align-items: center; }
+  .nav-links a { color: var(--muted); font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #07221a !important;
+    font-weight: 600;
+    padding: 0.75rem 1.4rem;
+    border-radius: 8px;
+  }
+  .btn:hover { background: var(--accent-dark); text-decoration: none !important; }
+  .btn-small { padding: 0.45rem 1rem; font-size: 0.9rem; }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent) !important;
+  }
+  .btn-outline:hover { background: rgba(45, 212, 167, 0.1); }
+
+  section { padding: 4.5rem 0; }
+  section.alt { background: var(--bg-soft); }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; }
+  h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 1.75rem; }
+  h3 { font-size: 1.15rem; }
+  .kicker {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .card .price { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+  .card ul { padding-left: 1.1rem; color: var(--muted); font-size: 0.95rem; }
+  .card .btn { margin-top: auto; text-align: center; }
+
+  .badge-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .badge-list li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+  }
+  .badge-list .tag {
+    float: right;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: 99px;
+  }
+  .tag.earned { background: rgba(45, 212, 167, 0.15); color: var(--accent); }
+  .tag.progress { background: rgba(157, 176, 192, 0.15); color: var(--muted); }
+
+  .site-footer { border-top: 1px solid var(--border); padding: 3rem 0 1.5rem; background: var(--bg-soft); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+  .footer-grid a { display: block; color: var(--muted); margin-bottom: 0.4rem; font-size: 0.95rem; }
+  .footer-grid a:hover { color: var(--text); }
+  .footer-heading { font-weight: 600; margin-bottom: 0.6rem; }
+  .copyright { font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+
+  .prose { max-width: 720px; }
+  .prose p { margin-bottom: 1rem; }
+  .prose h2 { margin-top: 2rem; }
+
+  @media (max-width: 720px) {
+    .nav-links a:not(.btn) { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
