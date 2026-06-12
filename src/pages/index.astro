@@ -1,0 +1,177 @@
+---
+import Base from '../layouts/Base.astro';
+
+const wa = (service: string) =>
+  `https://wa.me/27630672211?text=${encodeURIComponent(`Hi Tobiloba, I'd like to book the ${service}.`)}`;
+
+// NOTE: service names are working drafts — confirm/rename before launch. Prices from the existing offer.
+const services = [
+  {
+    name: 'Security Gap Audit',
+    price: 'R2,800',
+    blurb: 'A focused review of your current security posture — where you are exposed and what to fix first.',
+    items: [
+      'Account & access review (email, cloud, admin)',
+      'Top-risk findings, plainly explained',
+      'Prioritized remediation checklist'
+    ]
+  },
+  {
+    name: 'Identity & Access (IAM) Audit',
+    price: 'R3,200',
+    blurb: 'Who can touch what, and why. A deep pass over identities, permissions, and MFA across your stack.',
+    items: [
+      'User, role & privilege mapping',
+      'MFA / conditional-access review',
+      'Least-privilege remediation plan'
+    ]
+  },
+  {
+    name: 'Cloud Platform Security Audit',
+    price: 'R3,500',
+    blurb: 'Configuration review of your cloud environment against current security baselines.',
+    items: [
+      'Microsoft 365 / Entra ID or Google Cloud',
+      'Misconfiguration & exposure findings',
+      'Hardening roadmap with quick wins'
+    ]
+  }
+];
+
+const earned = [
+  'ISC2 Certified in Cybersecurity (CC)',
+  'Fortinet Certified Associate — Cybersecurity',
+  'Cisco CyberOps Associate'
+];
+const inProgress = [
+  'Google Cloud Associate Cloud Engineer (ACE)',
+  'Microsoft SC-300 — Identity and Access Administrator',
+  'Kubernetes (CKA)'
+];
+---
+
+<Base
+  title="Tobiloba Adeyemo — Cloud Security Engineer | Founder, Raptview Labs"
+  description="Tobiloba Adeyemo — cloud security engineer and founder in Gauteng, South Africa. Identity & cloud platform security: IAM, Microsoft Entra, Google Cloud."
+>
+  <section class="hero">
+    <div class="container">
+      <p class="kicker">Identity &amp; Cloud Platform Security</p>
+      <h1>Cloud Security Engineer.<br />Founder, Raptview Labs.</h1>
+      <p class="lede muted">
+        Founder and systems operator turned cloud security engineer. I've built and run ventures
+        across Africa since 2019 — securing my own cross-border operations is what pulled me into
+        security. Now I help businesses lock down identity and cloud platforms.
+      </p>
+      <div class="hero-cta">
+        <a class="btn" href="#services">Book a security audit</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/tobilobaadeyemo">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="alt">
+    <div class="container">
+      <p class="kicker">Services</p>
+      <h2>Security audits, priced plainly</h2>
+      <div class="cards">
+        {
+          services.map((s) => (
+            <div class="card">
+              <h3>{s.name}</h3>
+              <p class="price">{s.price}</p>
+              <p class="muted">{s.blurb}</p>
+              <ul>
+                {s.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+              <a class="btn" href={wa(s.name)}>
+                Book via WhatsApp
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <p class="kicker">Credentials</p>
+      <h2>Certifications</h2>
+      <p class="muted" style="margin-bottom:1.5rem;">
+        Every credential below is independently verifiable on
+        <a href="https://www.credly.com/users/tobilobaadeyemo">Credly</a>. In-progress means exactly
+        that — not yet held.
+      </p>
+      <ul class="badge-list">
+        {earned.map((c) => (
+          <li>{c}<span class="tag earned">Earned</span></li>
+        ))}
+        {inProgress.map((c) => (
+          <li>{c}<span class="tag progress">In progress</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" class="alt">
+    <div class="container prose">
+      <p class="kicker">About</p>
+      <h2>From running systems to securing them</h2>
+      <p>
+        My path into security ran through operations, not a textbook. Starting in banking
+        operations at Skye Bank (2014–2015), where front-line money-transfer work meant
+        high-volume, zero-tolerance transaction verification, I moved into the creative and
+        commercial world, and since 2019 I've built and run ventures across Nigeria and South
+        Africa.
+      </p>
+      <p>
+        Through Raptview and Choice International I managed campaigns and supply-chain operations
+        for international brands including GAC Motor, GREE, LONTOR, and Dongfeng — work that took
+        me to the 2025 China-Africa CEO Dialogue in Changsha, with coverage in Businessday NG and
+        Guardian Nigeria.
+        <!-- TODO: link the exact Businessday / Guardian article URLs here once confirmed. -->
+      </p>
+      <p>
+        Running cross-border ventures meant being responsible for their security — identities,
+        payments, cloud infrastructure, and the trust of partners on two continents. That
+        responsibility became a focus, then a profession. I now work in cloud security with a
+        concentration on identity and access management across Microsoft Entra ID and Google
+        Cloud, and a particular interest in what practical, affordable security looks like for
+        SMEs in emerging markets.
+      </p>
+      <p>
+        I hold an HND in Computer Science (The Polytechnic, Ibadan, 2016) and a BBA in Marketing
+        (Nexford University, 2021) — the technical foundation and the business lens, in that
+        order.
+      </p>
+      <p>
+        I believe the best security engineers are the ones who have run the systems they're now
+        asked to protect.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <p class="kicker">Contact</p>
+      <h2>Let's talk</h2>
+      <p class="muted" style="max-width:560px;margin-bottom:1.5rem;">
+        Fastest way to reach me is WhatsApp. For anything else, find me on LinkedIn.
+        <!-- TODO: once tobiloba@tobilobaadeyemo.com is live, add it here as the canonical email. -->
+      </p>
+      <div class="hero-cta">
+        <a class="btn" href="https://wa.me/27630672211">WhatsApp: +27 63 067 2211</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/tobilobaadeyemo">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 6.5rem 0 5rem; }
+  .lede { max-width: 640px; font-size: 1.1rem; margin: 1.25rem 0 2rem; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+</style>
