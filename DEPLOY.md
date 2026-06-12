@@ -37,4 +37,4 @@ Upload the contents of `dist/` into `public_html/` via hPanel File Manager or FT
 - **Add the press article URLs** (Businessday NG, Guardian Nigeria) — marked with a TODO comment in the About section.
 - **Add a real headshot** to `public/` and reference it in the Person schema (`src/layouts/Base.astro`, add an `image` field) and an `og:image` tag.
 - **Set up `tobiloba@tobilobaadeyemo.com`** (hPanel → Emails), then add it to the contact section.
-- WhatsApp number is standardized to `+27630672211` everywhere — confirm this is the correct number before launch (the old site had two variants).
+- WhatsApp number `+27630672211` is confirmed correct (matches your 2025 resume and the old site header).

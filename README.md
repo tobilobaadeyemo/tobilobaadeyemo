@@ -32,6 +32,11 @@ All credentials verifiable on [Credly](https://www.credly.com/users/tobilobaadey
 
 Before security I spent years as a founder and operator — running Raptview and managing creative and supply-chain operations for international brands across Nigeria and South Africa, including coverage by Businessday NG and Guardian Nigeria at the 2025 China-Africa CEO Dialogue in Changsha. That operator's view of how businesses actually run — and where they actually break — is the lens I bring to security work.
 
+## Education
+
+- BBA, Marketing — Nexford University (2021)
+- HND, Computer Science — The Polytechnic, Ibadan (2016)
+
 ## Connect
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/tobilobaadeyemo)
